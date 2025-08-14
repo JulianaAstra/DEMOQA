@@ -28,6 +28,9 @@ public class PracticeFormTests {
         String year = "1989";
         String month = "February";
         String day = "6";
+        String subjectScience = "Computer Science";
+        String subjectEnglish = "English";
+        String subjectArts = "Arts";
 
         open(route);
 
@@ -59,7 +62,13 @@ public class PracticeFormTests {
         $(".react-datepicker").shouldNotBe(visible);
 
         // subjects
+        $("#subjectsInput").setValue(subjectScience).pressEnter();
+        $("#subjectsInput").setValue(subjectEnglish).pressEnter();
+        $("#subjectsInput").setValue(subjectArts).pressEnter();
+        $(".subjects-auto-complete_menu").shouldNotBe(visible);
+
         // hobbies
+
         // picture
         $("#currentAddress").setValue("Some street 1");
         // state and city + city
