@@ -31,15 +31,14 @@ public class PracticeFormTests {
     String city;
 
     @BeforeAll
-    static void beforeAll() {
+    static void setupConfig() {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
     }
 
     @BeforeEach
-    void beforeEach() {
-        route = "/automation-practice-form";
+    void setupUserData() {
         firstName = "Julia";
         lastName = "K";
         email = "test_email@ya.ru";
@@ -61,6 +60,8 @@ public class PracticeFormTests {
 
     @Test
     void fillFormTest() {
+        route = "/automation-practice-form";
+
         open(route);
 
         // user name
