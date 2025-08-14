@@ -3,11 +3,9 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Condition.exactText;
-import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class PracticeFormTests {
 
@@ -16,7 +14,7 @@ public class PracticeFormTests {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
-//        Configuration.holdBrowserOpen = true;
+        Configuration.holdBrowserOpen = true;
         Configuration.timeout = 5000; // default 4000
     }
 
@@ -26,16 +24,40 @@ public class PracticeFormTests {
         String firstName = "Julia";
         String lastName = "K";
         String email = "test_email@ya.ru";
+        String phoneNumber = "79009009090";
+        String year = "1989";
+        String month = "February";
+        String day = "6";
 
         open(route);
 
+        // user name
         $("#firstName").setValue(firstName);
         $("#lastName").setValue(lastName);
+
+        // email
         $("#userEmail").setValue(email);
+
+        // gender
         $(byText("Female")).click();
 
-        // mobile
+        // phone number
+        $("#userNumber").setValue(phoneNumber);
+
         // date of birth
+        $("#dateOfBirthInput").click();
+        $(".react-datepicker").shouldBe(visible);
+
+        $("select[class*='year']").selectOption(year);
+        $("select[class*='month']").selectOption(month);
+
+        $$(".react-datepicker__week").get(1)
+                .$$("[role='option']")
+                .find(exactText(day))
+                .click();
+
+        $(".react-datepicker").shouldNotBe(visible);
+
         // subjects
         // hobbies
         // picture
