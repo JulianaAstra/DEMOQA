@@ -16,8 +16,6 @@ public class PracticeFormTests {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.holdBrowserOpen = true;
-        Configuration.timeout = 5000; // default 4000
     }
 
     @Test
@@ -26,7 +24,8 @@ public class PracticeFormTests {
         String firstName = "Julia";
         String lastName = "K";
         String email = "test_email@ya.ru";
-        String phoneNumber = "79009009090";
+        String gender = "Female";
+        String phoneNumber = "7900900909";
         String year = "1989";
         String month = "February";
         String day = "6";
@@ -34,7 +33,11 @@ public class PracticeFormTests {
         String subjectEnglish = "English";
         String subjectArts = "Arts";
         String hobbieReading = "Reading";
-        String image = "src/test/resources/cat.jpg";
+        String routeToImg = "src/test/resources/";
+        String imageName = "cat.jpg";
+        String currentAddress = "Ryazan city";
+        String state = "Rajasthan";
+        String city = "Jaipur";
 
         open(route);
 
@@ -46,7 +49,7 @@ public class PracticeFormTests {
         $("#userEmail").setValue(email);
 
         // gender
-        $(byText("Female")).click();
+        $(byText(gender)).click();
 
         // phone number
         $("#userNumber").setValue(phoneNumber);
@@ -75,18 +78,42 @@ public class PracticeFormTests {
         $("#hobbiesWrapper").$(byText(hobbieReading)).click();
 
         // picture
-        $("#uploadPicture").uploadFile(new File(image));
+        $("#uploadPicture").uploadFile(new File(routeToImg + imageName));
 
+        // current address
+        $("#currentAddress").setValue(currentAddress);
 
+        // state and city
+        $("#state").scrollTo().click();
+        $("#state").find("[class*='menu']").shouldBe(visible);
+        $(byText(state)).click();
 
+        $("#city").click();
+        $("#city").find("[class*='menu']").shouldBe(visible);
+        $(byText(city)).click();
 
-        // state and city + city
+        // submit
         $("#submit").click();
 
-        // modal window selector
-        $("#output #name").shouldHave(text("Alex"));
-        $("#output #email").shouldHave(text("alex@egorov.com"));
-        $("#output #currentAddress").shouldHave(text("Some street 1"));
-        $("#output #permanentAddress").shouldHave(text("Another street 1"));
+        // check data in modal window
+
+        $(".modal-content").shouldBe(visible);
+
+        assertTableEntry("Student Name", firstName + " " + lastName);
+        assertTableEntry("Student Email", email);
+        assertTableEntry("Gender", gender);
+        assertTableEntry("Mobile", phoneNumber);
+        assertTableEntry("Date of Birth", "0" + day + " " + month + "," + year);
+        assertTableEntry("Subjects", subjectScience + ", " + subjectEnglish + ", " + subjectArts);
+        assertTableEntry("Hobbies", hobbieReading);
+        assertTableEntry("Picture", imageName);
+        assertTableEntry("Address", currentAddress);
+        assertTableEntry("State and City", state + " " + city);
+    }
+
+    private void assertTableEntry(String label, String value) {
+        $$("tr").find(text(label))
+                .$$("td").get(1)
+                .shouldHave(exactText(value));
     }
 }
