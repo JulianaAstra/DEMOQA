@@ -3,6 +3,8 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -31,6 +33,8 @@ public class PracticeFormTests {
         String subjectScience = "Computer Science";
         String subjectEnglish = "English";
         String subjectArts = "Arts";
+        String hobbieReading = "Reading";
+        String image = "src/test/resources/cat.jpg";
 
         open(route);
 
@@ -68,9 +72,14 @@ public class PracticeFormTests {
         $(".subjects-auto-complete_menu").shouldNotBe(visible);
 
         // hobbies
+        $("#hobbiesWrapper").$(byText(hobbieReading)).click();
 
         // picture
-        $("#currentAddress").setValue("Some street 1");
+        $("#uploadPicture").uploadFile(new File(image));
+
+
+
+
         // state and city + city
         $("#submit").click();
 
