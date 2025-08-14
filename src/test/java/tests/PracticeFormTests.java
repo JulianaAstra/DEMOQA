@@ -1,6 +1,7 @@
 package tests;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -10,6 +11,24 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class PracticeFormTests {
+    String route;
+    String firstName;
+    String lastName;
+    String email;
+    String gender;
+    String phoneNumber;
+    String year;
+    String month;
+    String day;
+    String subjectScience;
+    String subjectEnglish;
+    String subjectArts;
+    String hobbieReading;
+    String routeToImg;
+    String imageName;
+    String currentAddress;
+    String state;
+    String city;
 
     @BeforeAll
     static void beforeAll() {
@@ -18,27 +37,30 @@ public class PracticeFormTests {
         Configuration.pageLoadStrategy = "eager";
     }
 
+    @BeforeEach
+    void beforeEach() {
+        route = "/automation-practice-form";
+        firstName = "Julia";
+        lastName = "K";
+        email = "test_email@ya.ru";
+        gender = "Female";
+        phoneNumber = "7900900909";
+        year = "1989";
+        month = "February";
+        day = "6";
+        subjectScience = "Computer Science";
+        subjectEnglish = "English";
+        subjectArts = "Arts";
+        hobbieReading = "Reading";
+        routeToImg = "src/test/resources/";
+        imageName = "cat.jpg";
+        currentAddress = "Ryazan city";
+        state = "Rajasthan";
+        city = "Jaipur";
+    }
+
     @Test
     void fillFormTest() {
-        String route = "/automation-practice-form";
-        String firstName = "Julia";
-        String lastName = "K";
-        String email = "test_email@ya.ru";
-        String gender = "Female";
-        String phoneNumber = "7900900909";
-        String year = "1989";
-        String month = "February";
-        String day = "6";
-        String subjectScience = "Computer Science";
-        String subjectEnglish = "English";
-        String subjectArts = "Arts";
-        String hobbieReading = "Reading";
-        String routeToImg = "src/test/resources/";
-        String imageName = "cat.jpg";
-        String currentAddress = "Ryazan city";
-        String state = "Rajasthan";
-        String city = "Jaipur";
-
         open(route);
 
         // user name
