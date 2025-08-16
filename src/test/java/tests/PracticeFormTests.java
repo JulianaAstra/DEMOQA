@@ -4,8 +4,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
-
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -24,7 +22,6 @@ public class PracticeFormTests {
     String subjectEnglish;
     String subjectArts;
     String hobbieReading;
-    String routeToImg;
     String imageName;
     String currentAddress;
     String state;
@@ -51,7 +48,6 @@ public class PracticeFormTests {
         subjectEnglish = "English";
         subjectArts = "Arts";
         hobbieReading = "Reading";
-        routeToImg = "src/test/resources/";
         imageName = "cat.jpg";
         currentAddress = "Ryazan city";
         state = "Rajasthan";
@@ -72,7 +68,7 @@ public class PracticeFormTests {
         $("#userEmail").setValue(email);
 
         // gender
-        $(byText(gender)).click();
+        $("#genterWrapper").$(byText(gender)).click();
 
         // phone number
         $("#userNumber").setValue(phoneNumber);
@@ -101,19 +97,23 @@ public class PracticeFormTests {
         $("#hobbiesWrapper").$(byText(hobbieReading)).click();
 
         // picture
-        $("#uploadPicture").uploadFile(new File(routeToImg + imageName));
+        $("#uploadPicture").uploadFromClasspath(imageName);
 
         // current address
         $("#currentAddress").setValue(currentAddress);
 
         // state and city
         $("#state").scrollTo().click();
-        $("#state").find("[class*='menu']").shouldBe(visible);
-        $(byText(state)).click();
+        $("#state")
+                .find("[class*='menu']")
+                .shouldBe(visible)
+                .$(byText(state)).click();
 
         $("#city").click();
-        $("#city").find("[class*='menu']").shouldBe(visible);
-        $(byText(city)).click();
+        $("#city")
+                .find("[class*='menu']")
+                .shouldBe(visible)
+                .$(byText(city)).click();
 
         // submit
         $("#submit").click();
