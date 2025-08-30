@@ -1,15 +1,12 @@
 package tests;
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import Pages.PracticeFormPage;
 
-import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
+import java.util.List;
 
-public class PracticeFormTests {
-    String route;
+public class PracticeFormTests extends TestBase{
     String firstName;
     String lastName;
     String email;
@@ -17,7 +14,10 @@ public class PracticeFormTests {
     String phoneNumber;
     String year;
     String month;
+    Integer week = 1;
     String day;
+    List<String> subjects;
+    List<String> hobbies;
     String subjectScience;
     String subjectEnglish;
     String subjectArts;
@@ -27,12 +27,7 @@ public class PracticeFormTests {
     String state;
     String city;
 
-    @BeforeAll
-    static void setupConfig() {
-        Configuration.browserSize = "1920x1080";
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.pageLoadStrategy = "eager";
-    }
+    PracticeFormPage practiceFormPage;
 
     @BeforeEach
     void setupUserData() {
@@ -47,96 +42,43 @@ public class PracticeFormTests {
         subjectScience = "Computer Science";
         subjectEnglish = "English";
         subjectArts = "Arts";
+        subjects = List.of(subjectScience, subjectEnglish, subjectArts);
         hobbieReading = "Reading";
+        hobbies = List.of(hobbieReading);
         imageName = "cat.jpg";
         currentAddress = "Ryazan city";
         state = "Rajasthan";
         city = "Jaipur";
+
+        practiceFormPage = new PracticeFormPage();
     }
 
     @Test
     void fillFormTest() {
-        route = "/automation-practice-form";
-
-        open(route);
-
-        // user name
-        $("#firstName").setValue(firstName);
-        $("#lastName").setValue(lastName);
-
-        // email
-        $("#userEmail").setValue(email);
-
-        // gender
-        $("#genterWrapper").$(byText(gender)).click();
-
-        // phone number
-        $("#userNumber").setValue(phoneNumber);
-
-        // date of birth
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker").shouldBe(visible);
-
-        $("select[class*='year']").selectOption(year);
-        $("select[class*='month']").selectOption(month);
-
-        $$(".react-datepicker__week").get(1)
-                .$$("[role='option']")
-                .find(exactText(day))
-                .click();
-
-        $(".react-datepicker").shouldNotBe(visible);
-
-        // subjects
-        $("#subjectsInput").setValue(subjectScience).pressEnter();
-        $("#subjectsInput").setValue(subjectEnglish).pressEnter();
-        $("#subjectsInput").setValue(subjectArts).pressEnter();
-        $(".subjects-auto-complete_menu").shouldNotBe(visible);
-
-        // hobbies
-        $("#hobbiesWrapper").$(byText(hobbieReading)).click();
-
-        // picture
-        $("#uploadPicture").uploadFromClasspath(imageName);
-
-        // current address
-        $("#currentAddress").setValue(currentAddress);
-
-        // state and city
-        $("#state").scrollTo().click();
-        $("#state")
-                .find("[class*='menu']")
-                .shouldBe(visible)
-                .$(byText(state)).click();
-
-        $("#city").click();
-        $("#city")
-                .find("[class*='menu']")
-                .shouldBe(visible)
-                .$(byText(city)).click();
-
-        // submit
-        $("#submit").click();
-
-        // check data in modal window
-
-        $(".modal-content").shouldBe(visible);
-
-        assertTableEntry("Student Name", firstName + " " + lastName);
-        assertTableEntry("Student Email", email);
-        assertTableEntry("Gender", gender);
-        assertTableEntry("Mobile", phoneNumber);
-        assertTableEntry("Date of Birth", "0" + day + " " + month + "," + year);
-        assertTableEntry("Subjects", subjectScience + ", " + subjectEnglish + ", " + subjectArts);
-        assertTableEntry("Hobbies", hobbieReading);
-        assertTableEntry("Picture", imageName);
-        assertTableEntry("Address", currentAddress);
-        assertTableEntry("State and City", state + " " + city);
-    }
-
-    private void assertTableEntry(String label, String value) {
-        $$("tr").find(text(label))
-                .$$("td").get(1)
-                .shouldHave(exactText(value));
+        practiceFormPage
+                .openPage()
+                .setUserFirstName(firstName)
+                .setUserLastName(lastName)
+                .setUserEmail(email)
+                .setUserGender(gender)
+                .setUserPhoneNumber(phoneNumber)
+                .setUserDateOfBirth(year, month, week, day)
+                .setUserSubjects(subjects)
+                .setUserHobbies(hobbies)
+                .setUserPicture(imageName)
+                .setUserCurrentAddress(currentAddress)
+                .setUserStateAndCity(state, city)
+                .sendForm()
+                .checkTableValues(
+                        firstName + " " + lastName,
+                        email,
+                        gender,
+                        phoneNumber,
+                        "0" + day + " " + month + "," + year,
+                        subjectScience + ", " + subjectEnglish + ", " + subjectArts,
+                        hobbieReading,
+                        imageName,
+                        currentAddress,
+                        state + " " + city);
     }
 }
