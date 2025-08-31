@@ -54,7 +54,7 @@ public class PracticeFormTests extends TestBase{
     }
 
     @Test
-    void fillFormTest() {
+    void fillFullFormTest() {
         practiceFormPage
                 .openPage()
                 .setUserFirstName(firstName)
@@ -79,6 +79,23 @@ public class PracticeFormTests extends TestBase{
                         hobbieReading,
                         imageName,
                         currentAddress,
-                        state + " " + city);
+                        state + " " + city
+                );
+    }
+
+    @Test
+    void fillMinimumFormTest() {
+        practiceFormPage
+                .openPage()
+                .setUserFirstName(firstName)
+                .setUserLastName(lastName)
+                .setUserGender(gender)
+                .setUserPhoneNumber(phoneNumber)
+                .sendForm()
+                .checkTableValues(
+                        firstName + " " + lastName,
+                        gender,
+                        phoneNumber
+                );
     }
 }

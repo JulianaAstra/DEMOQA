@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class PracticeFormPage {
-    String route = "/automation-practice-form";
+    String practiceFormRoute = "/automation-practice-form";
 
     SelenideElement
             firstNameInput = $("#firstName"),
@@ -33,7 +33,7 @@ public class PracticeFormPage {
     TableComponent tableWithUserData = new TableComponent();
 
     public PracticeFormPage openPage() {
-        open(route);
+        open(practiceFormRoute);
         return this;
     }
 
@@ -156,6 +156,20 @@ public class PracticeFormPage {
         tableWithUserData.assertTableEntry("Picture", userPicture);
         tableWithUserData.assertTableEntry("Address", userCurrentAddress);
         tableWithUserData.assertTableEntry("State and City", userStateAndCity);
+
+        return this;
+    }
+
+    public PracticeFormPage checkTableValues(
+            String userName,
+            String userGender,
+            String userPhoneNumber) {
+
+        tableComponent.shouldBe(visible);
+
+        tableWithUserData.assertTableEntry("Student Name", userName);
+        tableWithUserData.assertTableEntry("Gender", userGender);
+        tableWithUserData.assertTableEntry("Mobile", userPhoneNumber);
 
         return this;
     }
