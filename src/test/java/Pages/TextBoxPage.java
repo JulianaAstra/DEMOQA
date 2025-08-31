@@ -3,6 +3,7 @@ package Pages;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -15,6 +16,7 @@ public class TextBoxPage {
         currentAddressInput = $("#currentAddress"),
         permanentAddressInput = $("#permanentAddress"),
         submitButton = $("#submit"),
+        output = $("#output"),
         firsNameOutput =  $("#output #name"),
         emailOutput = $("#output #email"),
         currentAddressOutput = $("#output #currentAddress"),
@@ -55,6 +57,9 @@ public class TextBoxPage {
             String userEmail,
             String userCurrentAddress,
             String userPermanentAddress) {
+
+        output.shouldBe(visible);
+
         firsNameOutput.shouldHave(text(userFirstName));
         emailOutput.shouldHave(text(userEmail));
         currentAddressOutput.shouldHave(text(userCurrentAddress));
