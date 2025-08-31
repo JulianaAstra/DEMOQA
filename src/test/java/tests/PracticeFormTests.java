@@ -12,6 +12,7 @@ public class PracticeFormTests extends TestBase{
     String email;
     String gender;
     String phoneNumber;
+    String invalidPhoneNumber;
     String year;
     String month;
     Integer week = 1;
@@ -36,6 +37,7 @@ public class PracticeFormTests extends TestBase{
         email = "test_email@ya.ru";
         gender = "Female";
         phoneNumber = "7900900909";
+        invalidPhoneNumber = "12345";
         year = "1989";
         month = "February";
         day = "6";
@@ -97,5 +99,30 @@ public class PracticeFormTests extends TestBase{
                         gender,
                         phoneNumber
                 );
+    }
+
+    @Test
+    void fillEmptyFormTest() {
+        practiceFormPage
+                .openPage()
+                .sendForm()
+                .checkFirstNameValidation()
+                .checkLastNameValidation()
+                .checkPhoneValidation()
+                .checkGenderValidation()
+                .checkFormNotSent();
+    }
+
+    @Test
+    void fillFormInvalidPhoneTest() {
+        practiceFormPage
+                .openPage()
+                .setUserFirstName(firstName)
+                .setUserLastName(lastName)
+                .setUserGender(gender)
+                .setUserPhoneNumber(invalidPhoneNumber)
+                .sendForm()
+                .checkPhoneValidation()
+                .checkFormNotSent();
     }
 }

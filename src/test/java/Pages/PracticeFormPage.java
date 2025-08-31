@@ -32,6 +32,9 @@ public class PracticeFormPage {
     CalendarComponent calendar = new CalendarComponent();
     TableComponent tableWithUserData = new TableComponent();
 
+    String validationBorderColor = "rgb(220, 53, 69)";
+    String validationTextColor = "rgba(220, 53, 69, 1)";
+
     public PracticeFormPage openPage() {
         open(practiceFormRoute);
         return this;
@@ -171,6 +174,32 @@ public class PracticeFormPage {
         tableWithUserData.assertTableEntry("Gender", userGender);
         tableWithUserData.assertTableEntry("Mobile", userPhoneNumber);
 
+        return this;
+    }
+
+    public PracticeFormPage checkPhoneValidation() {
+        phoneNumberInput.shouldHave(cssValue("border-color", validationBorderColor));
+        return this;
+    }
+
+    public PracticeFormPage checkFirstNameValidation() {
+        firstNameInput.shouldHave(cssValue("border-color", validationBorderColor));
+        return this;
+    }
+
+    public PracticeFormPage checkLastNameValidation() {
+       lastNameInput.shouldHave(cssValue("border-color", validationBorderColor));
+        return this;
+    }
+
+    public PracticeFormPage checkGenderValidation() {
+        genderInputWrapper.$$(".custom-control label")
+                .forEach(element -> element.shouldHave(cssValue("color", validationTextColor)));
+        return this;
+    }
+
+    public PracticeFormPage checkFormNotSent() {
+        tableComponent.shouldNotBe(visible);
         return this;
     }
 }
