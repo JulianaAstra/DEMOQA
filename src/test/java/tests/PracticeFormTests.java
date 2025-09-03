@@ -2,7 +2,7 @@ package tests;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import Pages.PracticeFormPage;
+import pages.PracticeFormPage;
 
 import java.util.List;
 

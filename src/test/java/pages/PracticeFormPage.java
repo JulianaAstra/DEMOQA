@@ -1,7 +1,7 @@
-package Pages;
+package pages;
 
-import Components.CalendarComponent;
-import Components.TableComponent;
+import components.CalendarComponent;
+import components.TableComponent;
 import com.codeborne.selenide.SelenideElement;
 import java.util.List;
 import static com.codeborne.selenide.Condition.*;

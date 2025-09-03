@@ -1,5 +1,5 @@
 package tests;
-import Pages.TextBoxPage;
+import pages.TextBoxPage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
