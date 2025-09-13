@@ -131,49 +131,15 @@ public class PracticeFormPage {
     }
 
     public PracticeFormPage sendForm() {
-        submitButton.click();
+        submitButton
+                .scrollTo()
+                .click();
         return this;
     }
 
-    public PracticeFormPage checkTableValues(
-            String userName,
-            String userEmail,
-            String userGender,
-            String userPhoneNumber,
-            String userDateOfBirth,
-            String userSubjects,
-            String userHobbies,
-            String userPicture,
-            String userCurrentAddress,
-            String userStateAndCity) {
-
+    public PracticeFormPage checkTableValue(String label, String value) {
         tableComponent.shouldBe(visible);
-
-        tableWithUserData.assertTableEntry("Student Name", userName);
-        tableWithUserData.assertTableEntry("Student Email", userEmail);
-        tableWithUserData.assertTableEntry("Gender", userGender);
-        tableWithUserData.assertTableEntry("Mobile", userPhoneNumber);
-        tableWithUserData.assertTableEntry("Date of Birth", userDateOfBirth);
-        tableWithUserData.assertTableEntry("Subjects", userSubjects);
-        tableWithUserData.assertTableEntry("Hobbies", userHobbies);
-        tableWithUserData.assertTableEntry("Picture", userPicture);
-        tableWithUserData.assertTableEntry("Address", userCurrentAddress);
-        tableWithUserData.assertTableEntry("State and City", userStateAndCity);
-
-        return this;
-    }
-
-    public PracticeFormPage checkTableValues(
-            String userName,
-            String userGender,
-            String userPhoneNumber) {
-
-        tableComponent.shouldBe(visible);
-
-        tableWithUserData.assertTableEntry("Student Name", userName);
-        tableWithUserData.assertTableEntry("Gender", userGender);
-        tableWithUserData.assertTableEntry("Mobile", userPhoneNumber);
-
+        tableWithUserData.assertTableEntry(label, value);
         return this;
     }
 

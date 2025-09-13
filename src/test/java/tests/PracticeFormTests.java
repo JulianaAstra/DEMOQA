@@ -71,18 +71,16 @@ public class PracticeFormTests extends TestBase{
                 .setUserCurrentAddress(currentAddress)
                 .setUserStateAndCity(state, city)
                 .sendForm()
-                .checkTableValues(
-                        firstName + " " + lastName,
-                        email,
-                        gender,
-                        phoneNumber,
-                        "0" + day + " " + month + "," + year,
-                        subjectScience + ", " + subjectEnglish + ", " + subjectArts,
-                        hobbieReading,
-                        imageName,
-                        currentAddress,
-                        state + " " + city
-                );
+                .checkTableValue("Student Name", firstName + " " + lastName)
+                .checkTableValue("Student Email", email)
+                .checkTableValue("Gender", gender)
+                .checkTableValue("Mobile", phoneNumber)
+                .checkTableValue("Date of Birth", "0" + day + " " + month + "," + year)
+                .checkTableValue("Subjects", subjectScience + ", " + subjectEnglish + ", " + subjectArts)
+                .checkTableValue("Hobbies", hobbieReading)
+                .checkTableValue("Picture", imageName)
+                .checkTableValue("Address", currentAddress)
+                .checkTableValue("State and City", state + " " + city);
     }
 
     @Test
@@ -94,11 +92,9 @@ public class PracticeFormTests extends TestBase{
                 .setUserGender(gender)
                 .setUserPhoneNumber(phoneNumber)
                 .sendForm()
-                .checkTableValues(
-                        firstName + " " + lastName,
-                        gender,
-                        phoneNumber
-                );
+                .checkTableValue("Student Name", firstName + " " + lastName)
+                .checkTableValue("Gender", gender)
+                .checkTableValue("Mobile", phoneNumber);
     }
 
     @Test
