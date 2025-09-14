@@ -7,6 +7,7 @@ import java.util.List;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import static utils.RandomUtils.*;
 
 public class PracticeFormPage {
     String practiceFormRoute = "/automation-practice-form";
@@ -46,9 +47,21 @@ public class PracticeFormPage {
         return this;
     }
 
+    public PracticeFormPage setRandomUserFirstName() {
+        firstNameInput
+                .setValue(getRandomFirstName());
+        return this;
+    }
+
     public PracticeFormPage setUserLastName(String lastName) {
         lastNameInput
                 .setValue(lastName);
+        return this;
+    }
+
+    public PracticeFormPage setRandomUserLastName() {
+        firstNameInput
+                .setValue(getRandomLastName());
         return this;
     }
 
@@ -61,6 +74,13 @@ public class PracticeFormPage {
     public PracticeFormPage setUserGender(String userGender) {
         genderInputWrapper
                 .$(byText(userGender))
+                .click();
+        return this;
+    }
+
+    public PracticeFormPage setRandomUserGender() {
+        genderInputWrapper
+                .$(byText(getRandomGender()))
                 .click();
         return this;
     }
@@ -79,24 +99,20 @@ public class PracticeFormPage {
         return this;
     }
 
-    public PracticeFormPage setUserSubjects(List<String> userSubjects) {
-        for (String subject: userSubjects) {
-            subjectsInput
-                    .shouldBe(visible)
-                    .setValue(subject)
-                    .pressEnter();
-        }
+    public PracticeFormPage setUserSubjects(String userSubject) {
+        subjectsInput
+                .shouldBe(visible)
+                .setValue(userSubject)
+                .pressEnter();
         subjectsAutocompleteMenu.shouldNotBe(visible);
         return this;
     }
 
-    public PracticeFormPage setUserHobbies(List<String> userHobbies) {
-        for (String hobbie: userHobbies) {
-            hobbiesWrapper.
-                    shouldBe(visible)
-                    .$(byText(hobbie))
-                    .click();
-        }
+    public PracticeFormPage setUserHobbies(String userHobby) {
+        hobbiesWrapper.
+                shouldBe(visible)
+                .$(byText(userHobby))
+                .click();
         return this;
     }
 

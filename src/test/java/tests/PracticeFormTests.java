@@ -3,60 +3,29 @@ package tests;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pages.PracticeFormPage;
-
-import java.util.List;
+import static tests.TestData.*;
+import static utils.RandomUtils.*;
 
 public class PracticeFormTests extends TestBase{
-    String firstName;
-    String lastName;
-    String email;
-    String gender;
-    String phoneNumber;
-    String invalidPhoneNumber;
-    String year;
-    String month;
-    Integer week = 1;
-    String day;
-    List<String> subjects;
-    List<String> hobbies;
-    String subjectScience;
-    String subjectEnglish;
-    String subjectArts;
-    String hobbieReading;
-    String imageName;
-    String currentAddress;
-    String state;
-    String city;
-
     PracticeFormPage practiceFormPage;
 
     @BeforeEach
     void setupUserData() {
-        firstName = "Julia";
-        lastName = "K";
-        email = "test_email@ya.ru";
-        gender = "Female";
-        phoneNumber = "7900900909";
-        invalidPhoneNumber = "12345";
-        year = "1989";
-        month = "February";
-        day = "6";
-        subjectScience = "Computer Science";
-        subjectEnglish = "English";
-        subjectArts = "Arts";
-        subjects = List.of(subjectScience, subjectEnglish, subjectArts);
-        hobbieReading = "Reading";
-        hobbies = List.of(hobbieReading);
-        imageName = "cat.jpg";
-        currentAddress = "Ryazan city";
-        state = "Rajasthan";
-        city = "Jaipur";
-
         practiceFormPage = new PracticeFormPage();
     }
 
     @Test
     void fillFullFormTest() {
+        String firstName = getRandomFirstName();
+        String lastName = getRandomLastName();
+        String gender = getRandomGender();
+        String phoneNumber = getRandomPhone();
+        String email = getRandomEmail();
+        String currentAddress = getRandomAddress();
+        String imageName = getRandomImageName();
+        String hobby = getRandomHobby();
+        String subject = getRandomSubject();
+
         practiceFormPage
                 .openPage()
                 .setUserFirstName(firstName)
@@ -65,8 +34,8 @@ public class PracticeFormTests extends TestBase{
                 .setUserGender(gender)
                 .setUserPhoneNumber(phoneNumber)
                 .setUserDateOfBirth(year, month, week, day)
-                .setUserSubjects(subjects)
-                .setUserHobbies(hobbies)
+                .setUserSubjects(subject)
+                .setUserHobbies(hobby)
                 .setUserPicture(imageName)
                 .setUserCurrentAddress(currentAddress)
                 .setUserStateAndCity(state, city)
@@ -76,8 +45,8 @@ public class PracticeFormTests extends TestBase{
                 .checkTableValue("Gender", gender)
                 .checkTableValue("Mobile", phoneNumber)
                 .checkTableValue("Date of Birth", "0" + day + " " + month + "," + year)
-                .checkTableValue("Subjects", subjectScience + ", " + subjectEnglish + ", " + subjectArts)
-                .checkTableValue("Hobbies", hobbieReading)
+                .checkTableValue("Subjects", subject)
+                .checkTableValue("Hobbies", hobby)
                 .checkTableValue("Picture", imageName)
                 .checkTableValue("Address", currentAddress)
                 .checkTableValue("State and City", state + " " + city);
@@ -85,6 +54,11 @@ public class PracticeFormTests extends TestBase{
 
     @Test
     void fillMinimumFormTest() {
+        String firstName = getRandomFirstName();
+        String lastName = getRandomLastName();
+        String gender = getRandomGender();
+        String phoneNumber = getRandomPhone();
+
         practiceFormPage
                 .openPage()
                 .setUserFirstName(firstName)
@@ -113,9 +87,9 @@ public class PracticeFormTests extends TestBase{
     void fillFormInvalidPhoneTest() {
         practiceFormPage
                 .openPage()
-                .setUserFirstName(firstName)
-                .setUserLastName(lastName)
-                .setUserGender(gender)
+                .setRandomUserFirstName()
+                .setRandomUserLastName()
+                .setRandomUserGender()
                 .setUserPhoneNumber(invalidPhoneNumber)
                 .sendForm()
                 .checkPhoneValidation()

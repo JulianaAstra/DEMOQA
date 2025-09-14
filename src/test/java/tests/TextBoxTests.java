@@ -1,7 +1,9 @@
 package tests;
+
 import pages.TextBoxPage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import static utils.RandomUtils.*;
 
 public class TextBoxTests extends TestBase {
     TextBoxPage textBoxPage;
@@ -13,10 +15,10 @@ public class TextBoxTests extends TestBase {
     @BeforeEach
     public void setData() {
         textBoxPage = new TextBoxPage();
-        firstName = "Alex";
-        email = "alex@egorov.com";
-        currentAddress = "Some street 1";
-        permanentAddress = "Another street 1";
+        firstName = getRandomFirstName();
+        email = getRandomEmail();
+        currentAddress = getRandomAddress();
+        permanentAddress = getRandomAddress();
     }
 
     @Test
