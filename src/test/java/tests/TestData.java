@@ -20,12 +20,6 @@ public class TestData {
 
     public static String invalidPhoneNumber = getRandomInvalidPhone();
 
-    public Integer year = getRandomYear();
-    public String month = getRandomMonth();
-    public Integer day = getRandomDayByYearAndMonth(year, month);
-    public String fullDate = getDate(month, day);
-
-    // todo сделать генерацию
     public String state = getRandomItemFromArray(states);
     public String city = getRandomCityByState(state);
 
@@ -38,4 +32,10 @@ public class TestData {
     public String imageName = getRandomItemFromArray(pictures);
     public String hobby = getRandomItemFromArray(hobbies);
     public String subject = getRandomItemFromArray(subjects);
+
+    // date of birth
+    public Integer year = getRandomYear();
+    public String month = getRandomMonth();
+    public Integer day = getRandomDayByYearAndMonth(year, month);
+    public String fullDate = getDate(month, day);
 }
