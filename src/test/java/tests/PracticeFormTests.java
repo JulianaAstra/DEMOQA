@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pages.PracticeFormPage;
 import static tests.TestData.*;
-import static utils.Utils.addZeroToNumber;
 
 public class PracticeFormTests extends TestBase{
     PracticeFormPage practiceFormPage;
@@ -25,7 +24,7 @@ public class PracticeFormTests extends TestBase{
                 .setUserEmail(testData.email)
                 .setUserGender(testData.gender)
                 .setUserPhoneNumber(testData.phoneNumber)
-                .setUserDateOfBirth(String.valueOf(testData.year), String.valueOf(testData.month), testData.fullDate)
+                .setUserDateOfBirth(String.valueOf(testData.year), testData.month, testData.day)
                 .setUserSubjects(testData.subject)
                 .setUserHobbies(testData.hobby)
                 .setUserPicture(testData.imageName)
@@ -36,7 +35,7 @@ public class PracticeFormTests extends TestBase{
                 .checkTableValue("Student Email", testData.email)
                 .checkTableValue("Gender", testData.gender)
                 .checkTableValue("Mobile", testData.phoneNumber)
-                .checkTableValue("Date of Birth", addZeroToNumber(testData.day) + " " + testData.month + "," + testData.year)
+                .checkTableValue("Date of Birth", testData.day + " " + testData.month + "," + testData.year)
                 .checkTableValue("Subjects", testData.subject)
                 .checkTableValue("Hobbies", testData.hobby)
                 .checkTableValue("Picture", testData.imageName)
@@ -74,9 +73,9 @@ public class PracticeFormTests extends TestBase{
     void fillFormInvalidPhoneTest() {
         practiceFormPage
                 .openPage()
-                .setRandomUserFirstName()
-                .setRandomUserLastName()
-                .setRandomUserGender()
+                .setUserFirstName(testData.firstName)
+                .setUserLastName(testData.lastName)
+                .setUserGender(testData.gender)
                 .setUserPhoneNumber(invalidPhoneNumber)
                 .sendForm()
                 .checkPhoneValidation()
