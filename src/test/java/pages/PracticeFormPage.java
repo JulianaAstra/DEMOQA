@@ -3,6 +3,8 @@ package pages;
 import components.CalendarComponent;
 import components.TableComponent;
 import com.codeborne.selenide.SelenideElement;
+import tests.TestData;
+
 import java.util.List;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
@@ -11,6 +13,8 @@ import static utils.RandomUtils.*;
 
 public class PracticeFormPage {
     String practiceFormRoute = "/automation-practice-form";
+
+    TestData testData = new TestData();
 
     SelenideElement
             firstNameInput = $("#firstName"),
@@ -80,7 +84,7 @@ public class PracticeFormPage {
 
     public PracticeFormPage setRandomUserGender() {
         genderInputWrapper
-                .$(byText(getRandomGender()))
+                .$(byText(testData.gender))
                 .click();
         return this;
     }
@@ -91,10 +95,10 @@ public class PracticeFormPage {
         return this;
     }
 
-    public PracticeFormPage setUserDateOfBirth(String year, String month, Integer week, String day) {
+    public PracticeFormPage setUserDateOfBirth(String year, String month, String date) {
         dateOfBirthInput.click();
         calendarComponent.shouldBe(visible);
-        calendar.setDate(year, month, week, day);
+        calendar.setDate(year, month, date);
         calendarComponent.shouldNotBe(visible);
         return this;
     }
