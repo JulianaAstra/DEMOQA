@@ -51,21 +51,9 @@ public class PracticeFormPage {
         return this;
     }
 
-    public PracticeFormPage setRandomUserFirstName() {
-        firstNameInput
-                .setValue(getRandomFirstName());
-        return this;
-    }
-
     public PracticeFormPage setUserLastName(String lastName) {
         lastNameInput
                 .setValue(lastName);
-        return this;
-    }
-
-    public PracticeFormPage setRandomUserLastName() {
-        firstNameInput
-                .setValue(getRandomLastName());
         return this;
     }
 
@@ -78,13 +66,6 @@ public class PracticeFormPage {
     public PracticeFormPage setUserGender(String userGender) {
         genderInputWrapper
                 .$(byText(userGender))
-                .click();
-        return this;
-    }
-
-    public PracticeFormPage setRandomUserGender() {
-        genderInputWrapper
-                .$(byText(testData.gender))
                 .click();
         return this;
     }

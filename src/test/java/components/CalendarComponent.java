@@ -14,12 +14,12 @@ public class CalendarComponent {
 
     SelenideElement daysContainer = $(".react-datepicker__month");
 
-    public void setDate(String year, String month, String date) {
+    public void setDate(String year, String month, String day) {
         yearSelect.selectOption(year);
         monthSelect.selectOption(month);
 
         daysContainer
-                .$("[aria-label*='" + date + "']")
+                .$(".react-datepicker__day--0" + day + ":not(.react-datepicker__day--outside-month)")
                 .click();
     }
 }

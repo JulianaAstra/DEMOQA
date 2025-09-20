@@ -1,12 +1,11 @@
 package tests;
 
+import com.github.javafaker.Faker;
 import static utils.RandomUtils.*;
-import static utils.RandomUtils.getRandomAddress;
-import static utils.RandomUtils.getRandomEmail;
-import static utils.RandomUtils.getRandomPhone;
-import static utils.Utils.getDate;
 
 public class TestData {
+    static Faker faker = new Faker();
+
     private static final String[] subjects = {"Computer Science", "English", "Arts", "Maths", "Social Studies", "Biology", "History"};
     private static final String[] hobbies = {"Reading", "Sports", "Music"};
     private static final String[] pictures = {"cat.jpg", "dog.jpg", "owl.jpg"};
@@ -18,24 +17,25 @@ public class TestData {
     public static final String[] citiesOfHaryana = {"Karnal", "Panipat"};
     public static final String[] citiesOfRajasthan = {"Jaipur", "Jaiselmer"};
 
-    public static String invalidPhoneNumber = getRandomInvalidPhone();
+    public static String invalidPhoneNumber = faker.phoneNumber().subscriberNumber(9);
 
-    public String state = getRandomItemFromArray(states);
+    public String state = faker.options().option(states);
     public String city = getRandomCityByState(state);
 
-    public String firstName = getRandomFirstName();
-    public String lastName = getRandomLastName();
-    public String gender = getRandomItemFromArray(genders);
-    public String phoneNumber = getRandomPhone();
-    public String email = getRandomEmail();
-    public String currentAddress = getRandomAddress();
-    public String imageName = getRandomItemFromArray(pictures);
-    public String hobby = getRandomItemFromArray(hobbies);
-    public String subject = getRandomItemFromArray(subjects);
+    public String firstName = faker.name().firstName();
+    public String lastName = faker.name().lastName();
+    public String gender = faker.options().option(genders);
+    public String phoneNumber = faker.phoneNumber().subscriberNumber(10);
+    public String email = faker.internet().emailAddress();
+    public String currentAddress = faker.address().fullAddress();
+    public String permanentAddress = faker.address().fullAddress();
+    public String imageName = faker.options().option(pictures);
+    public String hobby = faker.options().option(hobbies);
+    public String subject = faker.options().option(subjects);
 
     // date of birth
+    public static final String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
     public Integer year = getRandomYear();
-    public String month = getRandomMonth();
-    public Integer day = getRandomDayByYearAndMonth(year, month);
-    public String fullDate = getDate(month, day);
+    public String month = faker.options().option(months);
+    public String day = getRandomDayByYearAndMonth(year, month);
 }

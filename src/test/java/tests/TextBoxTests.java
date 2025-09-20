@@ -3,33 +3,26 @@ package tests;
 import pages.TextBoxPage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static utils.RandomUtils.*;
 
 public class TextBoxTests extends TestBase {
     TextBoxPage textBoxPage;
-    String firstName;
-    String email;
-    String currentAddress;
-    String permanentAddress;
+    TestData testData;
 
     @BeforeEach
     public void setData() {
         textBoxPage = new TextBoxPage();
-        firstName = getRandomFirstName();
-        email = getRandomEmail();
-        currentAddress = getRandomAddress();
-        permanentAddress = getRandomAddress();
+        testData = new TestData();
     }
 
     @Test
     void fillFormTest() {
         textBoxPage
             .openTextBoxPage()
-            .setUserFirstName(firstName)
-            .setUserEmail(email)
-            .setUserCurrentAddress(currentAddress)
-            .setUserPermanentAddress(permanentAddress)
+            .setUserFirstName(testData.firstName)
+            .setUserEmail(testData.email)
+            .setUserCurrentAddress(testData.currentAddress)
+            .setUserPermanentAddress(testData.permanentAddress)
             .sendForm()
-            .checkOutput(firstName, email, currentAddress, permanentAddress);
+            .checkOutput(testData.firstName, testData.email, testData.currentAddress, testData.permanentAddress);
     }
 }
