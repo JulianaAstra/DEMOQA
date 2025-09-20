@@ -1,11 +1,15 @@
 package utils;
 
 import com.github.javafaker.Faker;
+import org.openqa.selenium.devtools.v136.tethering.Tethering;
+import tests.TestData;
 
 import java.time.Month;
 import java.time.YearMonth;
 import java.time.format.TextStyle;
 import java.util.Locale;
+
+import static tests.TestData.*;
 
 public class RandomUtils {
     static Faker faker = new Faker();
@@ -39,7 +43,6 @@ public class RandomUtils {
     }
 
     public static Integer getRandomYear() {
-        // 1900 - 2100
         return faker.number().numberBetween(1900, 2100);
     }
 
@@ -53,5 +56,15 @@ public class RandomUtils {
         int days = YearMonth.of(year, month.getValue()).lengthOfMonth();
 
         return faker.number().numberBetween(1, days);
+    }
+
+    public static String getRandomCityByState(String state) {
+        return switch (state) {
+            case "NCR" -> getRandomItemFromArray(citiesOfNCR);
+            case "Uttar Pradesh" -> getRandomItemFromArray(citiesOfUttarPradesh);
+            case "Haryana" -> getRandomItemFromArray(citiesOfHaryana);
+            case "Rajasthan" -> getRandomItemFromArray(citiesOfRajasthan);
+            default -> "";
+        };
     }
 }

@@ -12,6 +12,12 @@ public class TestData {
     private static final String[] pictures = {"cat.jpg", "dog.jpg", "owl.jpg"};
     private static final String[] genders = {"Male", "Female", "Other"};
 
+    private static final String[] states = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
+    public static final String[] citiesOfNCR = {"Delhi", "Gurgaon", "Noida"};
+    public static final String[] citiesOfUttarPradesh = {"Agra", "Lucknow", "Merrut"};
+    public static final String[] citiesOfHaryana = {"Karnal", "Panipat"};
+    public static final String[] citiesOfRajasthan = {"Jaipur", "Jaiselmer"};
+
     public static String invalidPhoneNumber = getRandomInvalidPhone();
 
     public Integer year = getRandomYear();
@@ -20,8 +26,8 @@ public class TestData {
     public String fullDate = getDate(month, day);
 
     // todo сделать генерацию
-    public String state = "Rajasthan";
-    public String city = "Jaipur";
+    public String state = getRandomItemFromArray(states);
+    public String city = getRandomCityByState(state);
 
     public String firstName = getRandomFirstName();
     public String lastName = getRandomLastName();
