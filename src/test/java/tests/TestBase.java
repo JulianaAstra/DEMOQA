@@ -14,11 +14,26 @@ import java.util.Map;
 public class TestBase {
     @BeforeAll
     static void setupConfig() {
+        System.out.println("=== DEBUG: Starting configuration ===");
+        System.out.println("Remote URL: https://user1:1234@selenoid.autotests.cloud/wd/hub");
+        System.out.println("Browser: chrome");
+        System.out.println("Browser version: 141.0");
+
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
         Configuration.browser = "chrome";
-        Configuration.browserVersion = "141.0";
         Configuration.browserSize = "1920x1080";
-        Configuration.timeout = 10000;
+        Configuration.timeout = 30000;
+
+        // Включим подробное логирование
+        Configuration.headless = false; // на всякий случай
+        Configuration.browserCapabilities = new DesiredCapabilities();
+
+        System.out.println("=== DEBUG: Configuration completed ===");
+//        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+//        Configuration.browser = "chrome";
+//        Configuration.browserVersion = "141.0";
+//        Configuration.browserSize = "1920x1080";
+//        Configuration.timeout = 10000;
 //
 //        DesiredCapabilities capabilities = new DesiredCapabilities();
 //        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
