@@ -24,6 +24,7 @@ public class TestBase {
         Configuration.browserSize = "1920x1080";
         Configuration.timeout = 30000;
         Configuration.pageLoadTimeout = 30000;
+        Configuration.pageLoadStrategy = "eager";
 
         // Включим подробное логирование
         Configuration.headless = false; // на всякий случай
