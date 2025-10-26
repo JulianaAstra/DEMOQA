@@ -23,6 +23,7 @@ public class TestBase {
         Configuration.browser = "chrome";
         Configuration.browserSize = "1920x1080";
         Configuration.timeout = 30000;
+        Configuration.pageLoadTimeout = 30000;
 
         // Включим подробное логирование
         Configuration.headless = false; // на всякий случай
