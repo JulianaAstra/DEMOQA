@@ -65,4 +65,3 @@ tasks.withType(Test) {
         systemProperty "capabilities.enableVNC", "true"
         systemProperty "capabilities.enableVideo", "true"
     }
-}
