@@ -1,5 +1,6 @@
 package tests;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import pages.TextBoxPage;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,6 +17,7 @@ public class TextBoxTests extends TestBase {
     }
 
     @Test
+    @DisplayName("Форма отправляется с заполненными данными")
     @Tag("textbox")
     void fillFormTest() {
         textBoxPage
