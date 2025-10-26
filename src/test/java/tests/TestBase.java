@@ -20,10 +20,11 @@ public class TestBase {
         Configuration.browserSize = "1920x1080";
         Configuration.timeout = 10000;
 
-        // Простой способ без Map
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("enableVNC", true);
-        capabilities.setCapability("enableVideo", true);
+        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+                "enableVNC", true,
+                "enableVideo", true
+        ));
         Configuration.browserCapabilities = capabilities;
     }
 
