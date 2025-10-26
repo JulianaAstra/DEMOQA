@@ -13,15 +13,9 @@ public class TestBase {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+//        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
         Configuration.browser = "chrome";
-        Configuration.browserVersion = "120.0";
-
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("enableVNC", true);  // видеть экран
-        capabilities.setCapability("enableVideo", true); // запись видео
-        Configuration.browserCapabilities = capabilities;
-
+        Configuration.browserVersion = "141.0";
     }
 
     @BeforeEach
