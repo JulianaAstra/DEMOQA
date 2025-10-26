@@ -55,7 +55,7 @@ public class TextBoxPage {
 
     @Step("Отправить форму")
     public TextBoxPage sendForm() {
-        submitButton.click();
+        submitButton.scrollTo().click();
         return this;
     }
 
