@@ -145,6 +145,7 @@ public class PracticeFormPage {
     @Step("Отправить форму")
     public PracticeFormPage sendForm() {
         submitButton
+                .shouldBe(visible)
                 .scrollTo()
                 .click();
         return this;

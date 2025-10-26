@@ -44,8 +44,9 @@ tasks.withType(Test) {
         }
     }
 }
-    task demoqa_test(type: Test) {
-        useJUnitPlatform {
-            includeTags("practiceform", "textbox")
-        }
+
+task demoqa_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("practiceform", "textbox")
     }
+}

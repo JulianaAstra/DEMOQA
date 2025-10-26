@@ -14,16 +14,11 @@ import java.util.Map;
 public class TestBase {
     @BeforeAll
     static void setupConfig() {
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
-        Configuration.browser = "chrome";
-        Configuration.browserVersion = "141.0";
+        Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
-        Configuration.pageLoadStrategy = "eager";
         Configuration.timeout = 10000;
-        Configuration.headless = false;
-        Configuration.browserCapabilities = new DesiredCapabilities();
-
-        System.out.println("=== DEBUG: Configuration completed ===");
+        Configuration.pageLoadStrategy = "eager";
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
