@@ -44,24 +44,8 @@ tasks.withType(Test) {
         }
     }
 }
-
-//task demoqa_test(type: Test) {
-//    useJUnitPlatform {
-//        includeTags("practiceform", "textbox")
-//    }
-
     task demoqa_test(type: Test) {
         useJUnitPlatform {
             includeTags("practiceform", "textbox")
         }
-
-        // Добавьте эти системные свойства
-//        systemProperty "selenide.remote", "https://user1:1234@selenoid.autotests.cloud/wd/hub"
-//        systemProperty "selenide.browser", "chrome"
-//        systemProperty "selenide.browserVersion", "141.0"
-//        systemProperty "selenide.browserSize", "1920x1080"
-//
-//        // Для Selenoid capabilities
-//        systemProperty "capabilities.enableVNC", "true"
-//        systemProperty "capabilities.enableVideo", "true"
     }
