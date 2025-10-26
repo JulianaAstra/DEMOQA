@@ -18,6 +18,7 @@ public class TestBase {
         Configuration.browser = "chrome";
         Configuration.browserVersion = "141.0";
         Configuration.browserSize = "1920x1080";
+        Configuration.timeout = 10000;
 
         // Простой способ без Map
         DesiredCapabilities capabilities = new DesiredCapabilities();
