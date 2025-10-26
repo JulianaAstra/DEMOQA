@@ -56,12 +56,12 @@ tasks.withType(Test) {
         }
 
         // Добавьте эти системные свойства
-        systemProperty "selenide.remote", "https://user1:1234@selenoid.autotests.cloud/wd/hub"
-        systemProperty "selenide.browser", "chrome"
-        systemProperty "selenide.browserVersion", "141.0"
-        systemProperty "selenide.browserSize", "1920x1080"
-
-        // Для Selenoid capabilities
-        systemProperty "capabilities.enableVNC", "true"
-        systemProperty "capabilities.enableVideo", "true"
+//        systemProperty "selenide.remote", "https://user1:1234@selenoid.autotests.cloud/wd/hub"
+//        systemProperty "selenide.browser", "chrome"
+//        systemProperty "selenide.browserVersion", "141.0"
+//        systemProperty "selenide.browserSize", "1920x1080"
+//
+//        // Для Selenoid capabilities
+//        systemProperty "capabilities.enableVNC", "true"
+//        systemProperty "capabilities.enableVideo", "true"
     }
