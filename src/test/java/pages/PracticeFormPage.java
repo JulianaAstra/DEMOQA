@@ -14,8 +14,6 @@ import static utils.RandomUtils.*;
 public class PracticeFormPage {
     String practiceFormRoute = "/automation-practice-form";
 
-    TestData testData = new TestData();
-
     SelenideElement
             firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
