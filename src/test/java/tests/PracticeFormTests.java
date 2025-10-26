@@ -1,6 +1,7 @@
 package tests;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.PracticeFormPage;
 import static tests.TestData.*;
@@ -16,6 +17,7 @@ public class PracticeFormTests extends TestBase{
     }
 
     @Test
+    @Tag("practiceform")
     void fillFullFormTest() {
         practiceFormPage
                 .openPage()
@@ -44,6 +46,7 @@ public class PracticeFormTests extends TestBase{
     }
 
     @Test
+    @Tag("practiceform")
     void fillMinimumFormTest() {
         practiceFormPage
                 .openPage()
@@ -58,6 +61,7 @@ public class PracticeFormTests extends TestBase{
     }
 
     @Test
+    @Tag("practiceform")
     void fillEmptyFormTest() {
         practiceFormPage
                 .openPage()
@@ -70,6 +74,7 @@ public class PracticeFormTests extends TestBase{
     }
 
     @Test
+    @Tag("practiceform")
     void fillFormInvalidPhoneTest() {
         practiceFormPage
                 .openPage()

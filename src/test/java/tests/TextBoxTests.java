@@ -1,5 +1,6 @@
 package tests;
 
+import org.junit.jupiter.api.Tag;
 import pages.TextBoxPage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,6 +16,7 @@ public class TextBoxTests extends TestBase {
     }
 
     @Test
+    @Tag("textbox")
     void fillFormTest() {
         textBoxPage
             .openTextBoxPage()
