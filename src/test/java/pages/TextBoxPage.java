@@ -29,7 +29,7 @@ public class TextBoxPage {
         return this;
     }
 
-    @Step("Указать имя пользователя {firstName}")
+    @Step("Указать имя пользователя {userFirstName}")
     public TextBoxPage setUserFirstName(String userFirstName) {
         firstNameInput.setValue(userFirstName);
         return this;

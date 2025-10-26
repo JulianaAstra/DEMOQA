@@ -121,7 +121,7 @@ public class PracticeFormPage {
         return this;
     }
 
-    @Step("Указать штат {userState} и город {userCity } пользователя")
+    @Step("Указать штат {userState} и город {userCity} пользователя")
     public PracticeFormPage setUserStateAndCity(String userState, String userCity) {
         stateSelect
                 .scrollTo()
