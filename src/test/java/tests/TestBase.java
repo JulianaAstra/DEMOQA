@@ -20,6 +20,7 @@ public class TestBase {
         Configuration.browserSize = "1920x1080";
         Configuration.pageLoadStrategy = "eager";
         Configuration.timeout = 10000;
+        Configuration.headless = false;
         Configuration.browserCapabilities = new DesiredCapabilities();
 
         System.out.println("=== DEBUG: Configuration completed ===");
