@@ -19,7 +19,6 @@ public class PracticeFormTests extends TestBase{
 
     @Test
     @DisplayName("Форма отправляется со всеми заполненными данными")
-    @Tag("practiceform")
     void fillFullFormTest() {
         practiceFormPage
                 .openPage()
@@ -49,7 +48,6 @@ public class PracticeFormTests extends TestBase{
 
     @Test
     @DisplayName("Форма отправляется с минимумом данных")
-    @Tag("practiceform")
     void fillMinimumFormTest() {
         practiceFormPage
                 .openPage()
@@ -65,7 +63,6 @@ public class PracticeFormTests extends TestBase{
 
     @Test
     @DisplayName("Пустая форма не отправляется")
-    @Tag("practiceform")
     void fillEmptyFormTest() {
         practiceFormPage
                 .openPage()
@@ -79,7 +76,6 @@ public class PracticeFormTests extends TestBase{
 
     @Test
     @DisplayName("Форма с невалидным номером телефона не отправляется")
-    @Tag("practiceform")
     void fillFormInvalidPhoneTest() {
         practiceFormPage
                 .openPage()

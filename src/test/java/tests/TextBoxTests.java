@@ -18,7 +18,6 @@ public class TextBoxTests extends TestBase {
 
     @Test
     @DisplayName("Форма отправляется с заполненными данными")
-    @Tag("textbox")
     void fillFormTest() {
         textBoxPage
             .openTextBoxPage()
