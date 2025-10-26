@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
@@ -22,36 +23,43 @@ public class TextBoxPage {
         currentAddressOutput = $("#output #currentAddress"),
         permanentAddressOutput = $("#output #permanentAddress");
 
+    @Step("Открыть страницу")
     public TextBoxPage openTextBoxPage() {
         open(textBoxPageRoute);
         return this;
     }
 
+    @Step("Указать имя пользователя {firstName}")
     public TextBoxPage setUserFirstName(String userFirstName) {
         firstNameInput.setValue(userFirstName);
         return this;
     }
 
+    @Step("Указать email пользователя {userEmail}")
     public TextBoxPage setUserEmail(String userEmail) {
         emailInput.setValue(userEmail);
         return this;
     }
 
+    @Step("Указать фактический адрес пользователя {userCurrentAddress}")
     public TextBoxPage setUserCurrentAddress(String userCurrentAddress) {
         currentAddressInput.setValue(userCurrentAddress);
         return this;
     }
 
+    @Step("Указать постоянный адрес пользователя {userPermanentAddress}")
     public TextBoxPage setUserPermanentAddress(String userPermanentAddress) {
         permanentAddressInput.setValue(userPermanentAddress);
         return this;
     }
 
+    @Step("Отправить форму")
     public TextBoxPage sendForm() {
         submitButton.click();
         return this;
     }
 
+    @Step("Проверить вывод: имя пользователя - {userFirstName}, емейл пользователя - {userEmail}, фактический адрес - {userCurrentAddress}, постоянный адрес - {userPermanentAddress}")
     public TextBoxPage checkOutput(
             String userFirstName,
             String userEmail,
