@@ -35,8 +35,8 @@ dependencies {
 }
 
 tasks.withType(Test) {
-    useJUnitPlatform()
     systemProperty "allure.results.directory", "build/allure-results"
+    systemProperties(System.getProperties())
 
     testLogging {
         lifecycle {
@@ -44,4 +44,14 @@ tasks.withType(Test) {
             exceptionFormat "short"
         }
     }
+}
+
+test {
+    useJUnitPlatform()
+}
+
+task demo_qa(type: Test) {
+    useJUnitPlatform(
+            includeTags("practice_form")
+    )
 }
