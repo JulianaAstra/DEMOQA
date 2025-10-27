@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import pages.PracticeFormPage;
 import static tests.TestData.*;
 
-@Tag("practice_form")
 public class PracticeFormTests extends TestBase{
     PracticeFormPage practiceFormPage;
     TestData testData;
@@ -19,6 +18,7 @@ public class PracticeFormTests extends TestBase{
     }
 
     @Test
+    @Tag("practice_form")
     @DisplayName("Форма отправляется со всеми заполненными данными")
     void fillFullFormTest() {
         practiceFormPage
@@ -48,6 +48,7 @@ public class PracticeFormTests extends TestBase{
     }
 
     @Test
+    @Tag("practice_form")
     @DisplayName("Форма отправляется с минимумом данных")
     void fillMinimumFormTest() {
         practiceFormPage
@@ -63,6 +64,7 @@ public class PracticeFormTests extends TestBase{
     }
 
     @Test
+    @Tag("practice_form")
     @DisplayName("Пустая форма не отправляется")
     void fillEmptyFormTest() {
         practiceFormPage
@@ -76,6 +78,7 @@ public class PracticeFormTests extends TestBase{
     }
 
     @Test
+    @Tag("practice_form")
     @DisplayName("Форма с невалидным номером телефона не отправляется")
     void fillFormInvalidPhoneTest() {
         practiceFormPage
