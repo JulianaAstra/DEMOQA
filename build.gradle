@@ -50,8 +50,14 @@ test {
     useJUnitPlatform()
 }
 
-task demo_qa(type: Test) {
+task practice_form(type: Test) {
     useJUnitPlatform(
             includeTags("practice_form")
+    )
+}
+
+task text_box(type: Test) {
+    useJUnitPlatform(
+            includeTags("text_box")
     )
 }
