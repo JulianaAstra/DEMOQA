@@ -14,9 +14,12 @@ import java.util.Map;
 public class TestBase {
     @BeforeAll
     static void setupConfig() {
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "1920x1080";
+        Configuration.browser = System.getProperty("browser", "chrome");
+        Configuration.browserSize = System.getProperty("windowSize", "1920x1080");
+        Configuration.browserVersion = System.getProperty("version", "141");
         Configuration.pageLoadStrategy = "eager";
+
+        Configuration.baseUrl = "https://demoqa.com";
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
