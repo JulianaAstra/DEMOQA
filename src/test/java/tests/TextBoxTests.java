@@ -6,6 +6,7 @@ import pages.TextBoxPage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+@Tag("text_box")
 public class TextBoxTests extends TestBase {
     TextBoxPage textBoxPage;
     TestData testData;
