@@ -35,6 +35,7 @@ dependencies {
 }
 
 tasks.withType(Test) {
+    useJUnitPlatform()
     systemProperty "allure.results.directory", "build/allure-results"
     systemProperties(System.getProperties())
 
@@ -50,14 +51,15 @@ test {
     useJUnitPlatform()
 }
 
+
 task practice_form(type: Test) {
-    useJUnitPlatform(
-            includeTags("practice_form")
-    )
+    useJUnitPlatform{
+        includeTags("practice_form")
+    }
 }
 
 task text_box(type: Test) {
-    useJUnitPlatform(
-            includeTags("text_box")
-    )
+    useJUnitPlatform {
+        includeTags("text_box")
+    }
 }
