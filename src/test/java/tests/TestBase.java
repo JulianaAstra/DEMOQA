@@ -14,11 +14,32 @@ import java.util.Map;
 public class TestBase {
     @BeforeAll
     static void setupConfig() {
+
+        // ОТЛАДКА: выведем все системные свойства
+        System.out.println("=== SYSTEM PROPERTIES ===");
+        System.getProperties().forEach((key, value) -> {
+            if (key.toString().contains("selenide") ||
+                    key.toString().contains("browser") ||
+                    key.toString().contains("baseUrl") ||
+                    key.toString().contains("version")) {
+                System.out.println("PROPERTY: " + key + " = " + value);
+            }
+        });
+
+        String remote = System.getProperty("selenide.remote");
+        String baseUrl = System.getProperty("baseUrl");
+
+        Configuration.baseUrl = baseUrl;
+        Configuration.remote = remote;
+
+        System.out.println("=== CONFIGURATION ===");
+        System.out.println("Remote from system: " + remote);
+        System.out.println("BaseUrl from system: " + baseUrl);
+
+
         Configuration.browser = System.getProperty("browser", "chrome");
         Configuration.browserSize = System.getProperty("windowSize", "1920x1080");
         Configuration.browserVersion = System.getProperty("version", "141");
-        Configuration.baseUrl = System.getProperty("baseUrl");
-        Configuration.remote = System.getProperty("selenide.remote");
         Configuration.pageLoadStrategy = "eager";
 
 
