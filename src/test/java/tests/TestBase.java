@@ -18,7 +18,7 @@ public class TestBase {
         Configuration.browserSize = System.getProperty("windowSize", "1920x1080");
         Configuration.browserVersion = System.getProperty("version", "141");
         Configuration.baseUrl = System.getProperty("baseUrl");
-        Configuration.remote = System.getProperty("remote");
+        Configuration.remote = System.getProperty("selenide.remote");
         Configuration.pageLoadStrategy = "eager";
 
 
