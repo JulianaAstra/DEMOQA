@@ -15,7 +15,7 @@ public class TestBase {
     @BeforeAll
     static void setupConfig() {
         Configuration.remote= System.getProperty("remote");
-        Configuration.baseUrl = System.getProperty("baseUrl");
+        Configuration.baseUrl = System.getProperty("baseUrl", "https://demoqa.com");
         Configuration.browser = System.getProperty("browser", "chrome");
         Configuration.browserSize = System.getProperty("windowSize", "1920x1080");
         Configuration.browserVersion = System.getProperty("version", "128");
