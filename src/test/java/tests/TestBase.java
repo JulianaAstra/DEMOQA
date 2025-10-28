@@ -14,7 +14,7 @@ import java.util.Map;
 public class TestBase {
     @BeforeAll
     static void setupConfig() {
-        String remote = System.getProperty("remote");
+        String remote = System.getProperty("selenide.remote");
         String baseUrl = System.getProperty("baseUrl");
 
         Configuration.browser = System.getProperty("browser", "chrome");
