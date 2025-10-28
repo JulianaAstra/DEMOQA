@@ -15,17 +15,17 @@ public class TestBase {
     @BeforeAll
     static void setupConfig() {
 //        String remote = System.getProperty("selenide.remote");
-        String baseUrl = System.getProperty("baseUrl");
+//        String baseUrl = System.getProperty("baseUrl");
 
         Configuration.browser = System.getProperty("browser", "chrome");
         Configuration.browserSize = System.getProperty("windowSize", "1920x1080");
         Configuration.browserVersion = System.getProperty("version", "141");
-        Configuration.baseUrl = baseUrl;
+//        Configuration.baseUrl = baseUrl;
 //        Configuration.remote = remote;
         Configuration.pageLoadStrategy = "eager";
 
 
-//        Configuration.baseUrl = "https://demoqa.com";
+        Configuration.baseUrl = "https://demoqa.com";
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
