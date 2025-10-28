@@ -48,11 +48,6 @@ tasks.withType(Test) {
     }
 }
 
-test {
-    useJUnitPlatform()
-}
-
-
 task practice_form(type: Test) {
     useJUnitPlatform{
         includeTags("practice_form")
